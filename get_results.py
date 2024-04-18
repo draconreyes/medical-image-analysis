@@ -45,6 +45,8 @@ for folder_name in os.listdir(os.path.join(current_dir, base_dir)):
                     for i in range(array.shape[0]):
                         for j in range(array.shape[1]):
                             for k in range(array.shape[2]):
+                                if array[i, j, k] != 0 and array[i, j, k] != 1:
+                                    print(f"NUMERO DIFERENTE A 1 Y 0:{array[i, j, k]}")
                                 if array[i, j, k] == 1:
                                     contador += 1
                     # Actualizar el contador correspondiente

@@ -34,24 +34,24 @@ for folder_name in os.listdir(os.path.join(current_dir, base_dir)):
                 imagen_3 = nib.load(file_path_acquisition_3)
                 acquisition_3 = imagen_3.get_fdata()
                 acquisition_3_exists = True
-            union_acqui_1_vs_acqui_2 = 0
-            union_acqui_1_vs_acqui_3 = 0
+            inter_acqui_1_vs_acqui_2 = 0
+            inter_acqui_1_vs_acqui_3 = 0
             for i in range(acquisition_1.shape[0]):
                 for j in range(acquisition_1.shape[1]):
                     for k in range(acquisition_1.shape[2]):
                         if  acquisition_2_exists and acquisition_1[i, j, k] == acquisition_2[i, j, k]:
-                            union_acqui_1_vs_acqui_2 +=1
+                            inter_acqui_1_vs_acqui_2 +=1
                         elif acquisition_3_exists and acquisition_1[i, j, k] == acquisition_3[i, j, k]:
-                            union_acqui_1_vs_acqui_3 +=1
+                            inter_acqui_1_vs_acqui_3 +=1
             results.append(
                 {
                     "Folder":folder_name,
-                    "DSC_acquisition_1_vs_acquisition_2":((2*union_acqui_1_vs_acqui_2)/(acquisition_1.size + acquisition_2.size)) if acquisition_2_exists else "acquisition_2 no existe",
-                    "DSC_acquisition_1_vs_acquisition_3":((2*union_acqui_1_vs_acqui_3)/(acquisition_1.size + acquisition_3.size)) if acquisition_3_exists else "acquisition_3 no existe",
-                    "SENS_acquisition_1_vs_acquisition_2":((union_acqui_1_vs_acqui_2)/((union_acqui_1_vs_acqui_2+(acquisition_1.size/acquisition_2.size)))) if acquisition_2_exists else "acquisition_2 no existe",
-                    "SENS_acquisition_1_vs_acquisition_3":((union_acqui_1_vs_acqui_3)/((union_acqui_1_vs_acqui_3+(acquisition_1.size/acquisition_3.size)))) if acquisition_3_exists else "acquisition_3 no existe",
-                    "PPV_acquisition_1_vs_acquisition_2":((union_acqui_1_vs_acqui_2)/(acquisition_2.size)) if acquisition_2_exists else "acquisition_2 no existe",
-                    "PPV_acquisition_1_vs_acquisition_3":((union_acqui_1_vs_acqui_3)/(acquisition_3.size)) if acquisition_3_exists else "acquisition_3 no existe"
+                    "DSC_acquisition_1_vs_acquisition_2":((2*inter_acqui_1_vs_acqui_2)/(acquisition_1.size + acquisition_2.size)) if acquisition_2_exists else 0,
+                    "DSC_acquisition_1_vs_acquisition_3":((2*inter_acqui_1_vs_acqui_3)/(acquisition_1.size + acquisition_3.size)) if acquisition_3_exists else 0,
+                    "SENS_acquisition_1_vs_acquisition_2":((inter_acqui_1_vs_acqui_2)/((inter_acqui_1_vs_acqui_2+(acquisition_1.size/acquisition_2.size)))) if acquisition_2_exists else 0,
+                    "SENS_acquisition_1_vs_acquisition_3":((inter_acqui_1_vs_acqui_3)/((inter_acqui_1_vs_acqui_3+(acquisition_1.size/acquisition_3.size)))) if acquisition_3_exists else 0,
+                    "PPV_acquisition_1_vs_acquisition_2":((inter_acqui_1_vs_acqui_2)/(acquisition_2.size)) if acquisition_2_exists else 0,
+                    "PPV_acquisition_1_vs_acquisition_3":((inter_acqui_1_vs_acqui_3)/(acquisition_3.size)) if acquisition_3_exists else 0
                 }
             )
         else:
