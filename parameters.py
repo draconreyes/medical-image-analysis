@@ -58,12 +58,12 @@ for folder_name in os.listdir(os.path.join(current_dir, base_dir)):
             results.append(
                 {
                     "Folder":folder_name,
-                    "DSC_acquisition_1_vs_acquisition_2": "acquisition_1 no existe",
-                    "DSC_acquisition_1_vs_acquisition_3": "acquisition_1 no existe",
-                    "SENS_acquisition_1_vs_acquisition_2": "acquisition_1 no existe",
-                    "SENS_acquisition_1_vs_acquisition_3": "acquisition_1 no existe",
-                    "PPV_acquisition_1_vs_acquisition_2": "acquisition_1 no existe",
-                    "PPV_acquisition_1_vs_acquisition_3": "acquisition_1 no existe"
+                    "DSC_acquisition_1_vs_acquisition_2": 0,
+                    "DSC_acquisition_1_vs_acquisition_3": 0,
+                    "SENS_acquisition_1_vs_acquisition_2": 0,
+                    "SENS_acquisition_1_vs_acquisition_3": 0,
+                    "PPV_acquisition_1_vs_acquisition_2": 0,
+                    "PPV_acquisition_1_vs_acquisition_3": 0
                 }
             )
 
