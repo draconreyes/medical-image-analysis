@@ -5,8 +5,7 @@ import numpy as np
 import SimpleITK as sitk
 from skimage import metrics
 
-
-pathOutput = 'C:\AA_FMISOSegmentation'
+pathOutput = 'C:\\Users\\Diego Peña\\Documents\\xyomi_program\\TFM_Abril\\AA_FMISOSegmentation'
 pathInput = os.path.join(pathOutput, 'Patients')
 dirListPatients = os.listdir(pathInput)
 
@@ -78,9 +77,3 @@ for i in range(0, len(dirListPatients)):
         print (PPV_coef(imgGT, imgOutput))
         print (Sens_coef(imgGT, imgOutput))
         print (volumeContour(imgOutput))
-
-        
-
-
-
-
